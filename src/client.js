@@ -1,48 +1,59 @@
 // client.js
-// Este archivo constituye la base del cliente para el proyecto FTSApp.
-// El cliente se conectará al servidor para recibir el mensaje de bienvenida.
+// Cliente TCP interactivo para el proyecto FTSApp.
+// Permite enviar múltiples mensajes al servidor a través de la consola.
 
-// Importa el módulo "net" que es parte del core de Node.js. 
-// Este módulo permite crear servidores y clientes utilizando sockets TCP, 
-// lo que es fundamental para la comunicación en red.
-
+// Importamos el módulo 'net' para crear sockets TCP.
 const net = require('net');
 
-// Definimos el puerto y la dirección del servidor al que nos conectaremos.
-// Estas constantes deben coincidir con las definidas en el servidor.
-// Estas constantes definen la dirección y el puerto a los que el cliente se conectará. 
-// Es vital que coincidan con los del servidor para que la conexión se establezca correctamente.
+// Importamos 'readline' para poder leer desde la entrada estándar (teclado).
+const readline = require('readline');
 
-const PORT = 5000;
-const HOST = 'localhost';
-
-// Creamos un nuevo socket para el cliente usando el constructor net.Socket().
-// Crea un nuevo objeto de tipo Socket que se utilizará para conectarse al servidor. 
-// Este objeto proporciona métodos para establecer conexiones, enviar y recibir datos.
+// Creamos una instancia de socket del lado del cliente.
 const client = new net.Socket();
 
-// Conectamos al servidor FTSApp utilizando client.connect().
-// El primer argumento es el puerto y el segundo es la dirección del servidor.
-// Conecta el cliente al servidor. Cuando la conexión se establece, 
-// se ejecuta el callback que imprime un mensaje en la consola indicando que la conexión fue exitosa.
-client.connect(PORT, HOST, () => {
-    console.log('Conectado al servidor FTSApp en Node.js');
+// Creamos una interfaz de lectura desde el teclado usando readline.
+// Esto permite que el usuario escriba comandos en la terminal.
+const rl = readline.createInterface({
+    input: process.stdin,   // Entrada estándar (teclado)
+    output: process.stdout  // Salida estándar (consola)
 });
 
-// Escuchamos el evento 'data' del cliente, que se dispara cuando se reciben datos del servidor.
-// Este evento se dispara cuando el cliente recibe datos del servidor.
-// data: Es un objeto Buffer que contiene la información recibida. Se convierte a cadena con
-// data.toString() para mostrarla en la consola.
-// Después de recibir el mensaje, se cierra la conexión utilizando client.destroy()
+// Nos conectamos al servidor en el puerto 5000 y la dirección 'localhost'.
+client.connect(5000, 'localhost', () => {
+    console.log('✅ Conectado al servidor FTSApp.');
+    preguntar(); // Llamamos a la función que pide entrada al usuario
+});
+
+// Escuchamos el evento 'data', que se activa cuando el servidor nos envía algo.
 client.on('data', (data) => {
-    // data es un Buffer; usamos toString() para convertirlo en una cadena legible.
-    console.log('Mensaje recibido del servidor:', data.toString());
-    // Una vez recibidos los datos, cerramos la conexión con client.destroy().
-    client.destroy();
+    // Mostramos la respuesta del servidor en consola.
+    console.log(`📨 Servidor: ${data}`);
+    // Volvemos a preguntar al usuario por el próximo mensaje.
+    preguntar();
 });
 
-// Manejamos el evento 'error' para capturar y mostrar cualquier error en la conexión.
-// Esto es útil para depurar problemas en la comunicación.
-client.on('error', (err) => {
-    console.error('Error en la conexión:', err.message);
+// Escuchamos el evento 'close', que se dispara cuando el servidor cierra la conexión.
+client.on('close', () => {
+    console.log('🔒 Conexión cerrada por el servidor.');
+    rl.close(); // Cerramos también la interfaz de entrada de usuario
 });
+
+// Escuchamos el evento 'error' para manejar errores de conexión o ejecución.
+client.on('error', (err) => {
+    console.error('❌ Error en el cliente:', err.message);
+    rl.close(); // Cerramos la interfaz para evitar que quede bloqueada
+});
+
+// Función personalizada que pregunta al usuario qué mensaje quiere enviar.
+function preguntar() {
+    rl.question('✏️ Mensaje para enviar al servidor (escribí "salir" para terminar): ', (input) => {
+        // Si el usuario escribe 'salir', cerramos la conexión y terminamos.
+        if (input.toLowerCase() === 'salir') {
+            client.end();    // Finalizamos la conexión con el servidor
+            rl.close();      // Cerramos la interfaz readline
+        } else {
+            client.write(input); // Enviamos el mensaje al servidor
+        }
+    });
+}
+
