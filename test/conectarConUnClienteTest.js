@@ -1,4 +1,8 @@
+/*Pruebas realizadas sobre la versión 1 de FTSAPP*/
+
 const { spawn } = require('child_process');
+
+//Puebo la conexión con un cliente
 
 console.log('Iniciando prueba de conexión cliente-servidor...\n');
 

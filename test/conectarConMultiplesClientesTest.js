@@ -1,6 +1,11 @@
+/*Pruebas realizadas sobre la versión 1 de FTSAPP */
+
 const { spawn } = require('child_process');
 
-const NUM_CLIENTES = 5; // Número de clientes que voy a conectar
+/*Pruebo la conexión con multiples clientes*/
+
+//Número de clientes que voy a conectar
+const NUM_CLIENTES = 5; 
 let clientesTerminados = 0;
 
 console.log('Iniciando prueba de múltiples clientes...\n');
