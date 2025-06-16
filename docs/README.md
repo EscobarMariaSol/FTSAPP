@@ -1,7 +1,8 @@
 # 📁 Proyecto FTSAPP: Transferencia Segura de Archivos con TLS
 
-Este proyecto implementa un sistema de transferencia de archivos cifrada punto a punto utilizando **TLS (Transport Layer Security)**. Permite subir (`PUT`), descargar (`GET`) y ejecutar comandos (`LIST`, `DELETE`, etc.) a través de una conexión segura entre cliente y servidor.
-
+Proyecto integrador de la materia Programación sobre Redes, el mismo consiste de un sistema que implementa un cliente y un servidor TLS
+en Node.js para la transferencia segura de archivos, asegurando la comunicación cifrada entre los componentes. 
+Incluye funcionalidades para listar, subir, descargar y eliminar archivos, con manejo de errores y validaciones básicas.
 ## 🔐 Tecnologías Utilizadas
 
 - Node.js
@@ -50,6 +51,17 @@ Este proyecto implementa un sistema de transferencia de archivos cifrada punto a
    ```
    
 Ambos comandos deben devolver un número de versión.
+## 📘 ¿Qué hace este proyecto?
+
+Este proyecto implementa un sistema de transferencia de archivos cifrada punto a punto utilizando **TLS (Transport Layer Security)**. Permite subir (`PUT`), descargar (`GET`) y ejecutar comandos (`LIST`, `DELETE`, etc.) a través de una conexión segura entre cliente y servidor.
+
+### 🌐 Interfaz web (directorio public/)
+El directorio [public/] contiene los archivos que se muestran en el navegador. Son cargados por el servidor web cuando se accede desde un navegador.
+
+Archivos principales:
+    - index.html: Define la estructura básica de la página web. Es el punto de entrada visual del proyecto.
+    - main.js: Contiene el código JavaScript que maneja las acciones del usuario en la interfaz (como seleccionar un archivo o enviar un comando) y se comunica con el backend vía HTTP.
+    - style.css: Define el estilo visual de la página, incluyendo colores, márgenes, fuentes, tamaños y disposición de elementos.
 
 ##  🧪 Como probar el proyecto
 
