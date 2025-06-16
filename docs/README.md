@@ -199,8 +199,10 @@ Salida esperada:
 ![Comandos list a¿y get](../docs/img/get_archivo.png)
 
 - **Ejecutando el comando PUT (captura.png):**
+
 Podemos ver que al ejecutar el comando PUT en nuestro directorio "files" aparece el archivo captura.png, y si hacemos un get
 ahora nos trae también este archivo.
+
 ![Camando PUT](../docs/img/cliente_put&list.png)
 
 - **Ejecutando el comando RENAME (rename captura.png -> gantt.png):**
@@ -210,7 +212,18 @@ ahora nos trae también este archivo.
 ![Comando delete](../docs/img/delete_terminal.png)
 
 - **Error por cerrar el servidor:**
-![Error de cierre del servidor](../docs/img/cierreDelServidor.pngS)
+![Error de cierre del servidor](../docs/img/cierreDelServidor.png)
+
+- **Respuestas del servidor abriendo varias pestañas desde el navegador:**
+![server con varias conexiones](../docs/img/server_varias_conexiones.png)
+
+- **Respuestas del servidor luego de cargar un archivo nuevo:**
+
+Se cargó un archivo desde el navegador:
+![Carga de archivo](../docs/img/cargar_nuevo_archivo.png)
+
+Vemos la respuesta del servidor
+![Respuesta del servidor](../docs/img/carga.png)
 
 ### Pruebas sobre la página web:
 
@@ -220,10 +233,17 @@ ahora nos trae también este archivo.
 - **Pagina web con archivos cargados:**
 ![Lista de archivos](../docs/img/localhost_con_archivos_cargados.png)
 
-- **Cargar un nuevo archivo: "env":**
+- **Cargar un nuevo archivo y descargar un archivo:**
+
+Podemos ver que se ha cargado un nuevo archivo llamado "env", además si elegimos descargar un archivo, 
+podemos ver que se ha descargado (Pop up del navegado en la esquina superior derecha).
 ![carga de archivo env](../docs/img/Carga%20de%20aarchivo%20env.png)
 
-- **Eliminar un archivo (se elimina la captura de pantalla):**
+- **Eliminar un archivo:**
+
+Si hacemos click en el bcls
+otón eliminar a la derecha de un archivo, vemos que se ha eliminado el archivo
+captura de pantalla.
 ![Eliminar un archivo](../docs/img/eliminar_archivo.png)
 
 - **Renombrar un archivo: "env" -> "enviroment":**

@@ -1,0 +1,25 @@
+Subject,Start Date,Start Time,End Date,End Time,Description
+Fundamentos Java: Sintaxis y estructuras,04/14/2025,20:00,04/14/2025,21:30,Semana 1 - Fundamentos Java: Sintaxis y estructuras
+Fundamentos Java: Métodos y funciones,04/15/2025,20:00,04/15/2025,21:30,Semana 1 - Fundamentos Java: Métodos y funciones
+POO: Clases y objetos,04/16/2025,20:00,04/16/2025,21:30,Semana 1 - POO: Clases y objetos
+POO: Herencia e interfaces,04/17/2025,20:00,04/17/2025,21:30,Semana 1 - POO: Herencia e interfaces
+Colecciones en Java,04/18/2025,20:00,04/18/2025,21:30,Semana 1 - Colecciones en Java
+Proyecto mini app gestión estudiantes,04/20/2025,20:00,04/20/2025,21:30,Semana 1 - Proyecto mini app gestión estudiantes
+Manejo de excepciones,04/21/2025,20:00,04/21/2025,21:30,Semana 2 - Manejo de excepciones
+Lambdas y Streams,04/22/2025,20:00,04/22/2025,21:30,Semana 2 - Lambdas y Streams
+Git básico y flujo de trabajo,04/23/2025,20:00,04/23/2025,21:30,Semana 2 - Git básico y flujo de trabajo
+UML: Diagramas de clase y secuencia,04/24/2025,20:00,04/24/2025,21:30,Semana 2 - UML: Diagramas de clase y secuencia
+Mini proyecto con Git,04/25/2025,20:00,04/25/2025,21:30,Semana 2 - Mini proyecto con Git
+Subir proyecto a GitHub + UML,04/27/2025,20:00,04/27/2025,21:30,Semana 2 - Subir proyecto a GitHub + UML
+Spring Boot: Proyecto base,04/28/2025,20:00,04/28/2025,21:30,Semana 3 - Spring Boot: Proyecto base
+Spring Boot: Controladores REST,04/29/2025,20:00,04/29/2025,21:30,Semana 3 - Spring Boot: Controladores REST
+Servicios y Repositorios,04/30/2025,20:00,04/30/2025,21:30,Semana 3 - Servicios y Repositorios
+Inyección de dependencias,05/01/2025,20:00,05/01/2025,21:30,Semana 3 - Inyección de dependencias
+MVC en Spring Boot,05/02/2025,20:00,05/02/2025,21:30,Semana 3 - MVC en Spring Boot
+API REST: Proyecto simple con lista,05/04/2025,20:00,05/04/2025,21:30,Semana 3 - API REST: Proyecto simple con lista
+Conexión a base de datos con JPA,05/05/2025,20:00,05/05/2025,21:30,Semana 4 - Conexión a base de datos con JPA
+Entidades y relaciones,05/06/2025,20:00,05/06/2025,21:30,Semana 4 - Entidades y relaciones
+Operaciones CRUD,05/07/2025,20:00,05/07/2025,21:30,Semana 4 - Operaciones CRUD
+Validaciones con anotaciones,05/08/2025,20:00,05/08/2025,21:30,Semana 4 - Validaciones con anotaciones
+Probar API con Postman,05/09/2025,20:00,05/09/2025,21:30,Semana 4 - Probar API con Postman
+API CRUD final: Proyecto y GitHub,05/11/2025,20:00,05/11/2025,21:30,Semana 4 - API CRUD final: Proyecto y GitHub
