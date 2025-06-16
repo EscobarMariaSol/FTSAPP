@@ -79,34 +79,25 @@ Salida esperada:
 
 ### 4. Pruebas que se pueden realizar:
 1. Ver archivos existentes (LIST)
-Si hay archivos en src/files/, deberían aparecer en la tabla.
-
-Si no hay, debe mostrar el mensaje "No hay archivos en el servidor".
+    - Si hay archivos en src/files/, deberían aparecer en la tabla.
+    - Si no hay, debe mostrar el mensaje "No hay archivos en el servidor".
 
 2. Subir archivo (PUT)
-Seleccionar un archivo desde el formulario.
-
-Click en “Subir”.
-
-El archivo debe aparecer en la lista.
-
-Verificar que no quede ningún archivo temporal en src/uploads/.
+    - Seleccionar un archivo desde el formulario.
+    - Click en “Subir”.
+    - El archivo debe aparecer en la lista.
+    - Verificar que no quede ningún archivo temporal en src/uploads/.
 
 3. Descargar archivo (GET)
-Click en “Descargar” al lado de un archivo.
-
-El navegador debe descargar el archivo correctamente.
+    - Click en “Descargar” al lado de un archivo.
+    - El navegador debe descargar el archivo correctamente.
 
 4. Eliminar archivo (DELETE)
-Click en “Eliminar”.
-
-Confirmar.
-
-El archivo debe desaparecer de la lista y eliminarse en src/files/.
+    - Click en “Eliminar”.
+    - Confirmar.
+    - El archivo debe desaparecer de la lista y eliminarse en src/files/.
 
 5. Renombrar archivo (RENAME)
-Click en “Renombrar”.
-
-Ingresar nuevo nombre (por ejemplo nuevo.txt).
-
-El nombre debe actualizarse en la tabla.
+    - Click en “Renombrar”.
+    - Ingresar nuevo nombre (por ejemplo nuevo.txt).
+    - El nombre debe actualizarse en la tabla.
