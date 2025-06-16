@@ -66,6 +66,49 @@ El directorio [public/] contiene los archivos que se muestran en el navegador. S
 ### 🧠 Estructura del código fuente (src/)
 El directorio src/ contiene el código fuente principal del sistema. Aquí se ubican los directorios y archivos que definen la lógica del proyecto:
 
+#### 🧩 Detalle de los componentes principales
+Esta sección describe el propósito y funcionamiento de los archivos clave que conforman el sistema de transferencia de archivos con conexión segura:
+
+- **secure-server.js – Servidor TLS (Transferencia segura)**
+
+    Este archivo implementa un servidor TLS puro, que escucha conexiones seguras desde clientes intermedios (tls-client.js) para realizar operaciones de archivos:
+    - Escucha en el puerto 6000 usando un certificado y clave privada (server-cert.pem y server-key.pem).
+    - Soporta comandos como:
+        - LIST: devuelve una lista de archivos disponibles.
+        - GET <archivo>: envía un archivo solicitado.
+        - PUT <archivo>: recibe y guarda un archivo.
+    - Verifica la integridad del comando recibido antes de ejecutar acciones.
+    - Solo responde a clientes que usen TLS con certificado verificado.
+    - Es el núcleo de almacenamiento seguro del sistema.
+
+- **secure-client.js – Cliente Web (Express + HTTPS)**
+    Este archivo es un servidor web con Express que expone una interfaz web segura para el usuario final. Sus principales características:
+    - Utiliza HTTPS con TLS, montado sobre Express.
+    - Sirve el contenido estático desde el directorio public (HTML, JS y CSS).
+    - Expone rutas como:
+        - GET /: muestra el frontend (index.html).
+        - POST /upload: permite subir archivos. 
+        - GET /files/:filename: descarga archivos.
+    - Actúa como puente entre el navegador del usuario y el cliente TLS (tls-client.js), enviando los comandos apropiados al backend seguro.
+    - Es el interfaz web segura del sistema.
+
+- **tls-client.js – Cliente TLS intermediario**
+    Este módulo conecta el servidor Express (secure-client.js) con el servidor TLS (secure-server.js) y maneja las operaciones seguras:
+    - Provee funciones:
+        - sendCommand: para enviar comandos como LIST.
+        - getFile: para descargar archivos.
+        - putFile: para subir archivos con confirmación del servidor.
+    - Se asegura de esperar el READY: PUT antes de subir un archivo.
+    - Verifica que la subida fue exitosa antes de borrar el archivo temporal.
+    - Es el módulo intermedio que traduce acciones web en comandos TLS.
+
+- **web-server.js – Alternativa simple sin TLS**
+    Este archivo levanta un servidor HTTP Express sin cifrado, útil para pruebas locales rápidas:
+    - Sirve el contenido del directorio public.
+    - No implementa rutas de subida ni conexión TLS.
+    - Útil para desarrollo sin certificados ni puertos seguros.
+    - Es una alternativa básica de desarrollo que se puede usar mientras se prueba el frontend.
+    
 #### 🔐 Certificados (certs/)
 El directorio certs/ almacena los certificados y claves necesarias para establecer conexiones TLS seguras. Estos archivos permiten que cliente y servidor verifiquen su identidad mutuamente.
 - server-key.pem: Este archivo contiene la clave privada RSA del servidor. Es crucial para el cifrado TLS, ya que se utiliza para firmar digitalmente los datos que el servidor envía, permite al servidor desencriptar datos que fueron cifrados con su clave pública, y valida que el servidor es quien dice ser (en combinación con su certificado).
