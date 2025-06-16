@@ -11,24 +11,24 @@ Este proyecto implementa un sistema de transferencia de archivos cifrada punto a
 - Módulo `fs` para manejo de archivos
 
 ## 📦 Estructura del Proyecto
-|-- node_modules/ # Almacena todas las dependencias (librerías y módulos)
-|-- public/ # Interfaz web estática (HTML/JS)
-    |-- index.html
-    |-- main.js
-    |-- style.css
-|-- src/ # Código funte del proyecto
-    |-- certs/ # Certificados TLS (clave y certificado)
-        |-- server-cert.pem
-        |-- server-csr.pem
-        |-- server-key.pem
-    |-- downloads/
-    |-- files/
-    |-- uploads/
-    |-- web-server.js # Servidor Web HTTPS con Express (backend que expone la API REST + sirve la UI)
-    |-- secure-server.js # Servidor TLS que gestiona archivos
-    |-- secure-client.js # Cliente en su versión de consola para pruebas 
-    |-- tls-client.js # Cliente en TLS que sube/descarga archivos
-|-- README.md # Este archivo
+    |-- node_modules/ # Almacena todas las dependencias (librerías y módulos)
+    |-- public/ # Interfaz web estática (HTML/JS)
+        |-- index.html
+        |-- main.js
+        |-- style.css
+    |-- src/ # Código funte del proyecto
+        |-- certs/ # Certificados TLS (clave y certificado)
+            |-- server-cert.pem
+            |-- server-csr.pem
+            |-- server-key.pem
+        |-- downloads/
+        |-- files/
+        |-- uploads/
+        |-- web-server.js # Servidor Web HTTPS con Express (backend que expone la API REST + sirve la UI)
+        |-- secure-server.js # Servidor TLS que gestiona archivos
+        |-- secure-client.js # Cliente en su versión de consola para pruebas 
+        |-- tls-client.js # Cliente en TLS que sube/descarga archivos
+    |-- README.md # Este archivo
 
 
 ## ⚙️ Configuración Inicial
@@ -44,8 +44,11 @@ Este proyecto implementa un sistema de transferencia de archivos cifrada punto a
 - Descargá el instalador para tu sistema operativo (Windows, macOS o Linux).
 - Seguí los pasos del instalador.
 - Para verificar que Node.js se instaló correctamente: abrir la terminal y correr los siguientes comandos
-    - node -v
-    - npm -v
+   ```
+   - node -v
+   - npm -v
+   ```
+   
 Ambos comandos deben devolver un número de versión.
 
 ##  🧪 Como probar el proyecto
@@ -56,17 +59,17 @@ Abrir una terminal y ejecutá el servidor seguro:
    node secure-server.js
 ```
 Salida esperada:
-    ```[SERVER] Servidor TLS escuchando en puerto 6000
-    ```
 
+    [SERVER] Servidor TLS escuchando en puerto 6000
+    
 ### 2.Iniciar el servidor web (web-server.js)
 Abrir otra terminal (sin cerrar la terminal del servidor) y ejecutá el cliente seguro:
    ```bash
    node web-server.js
 ```
 Salida esperada:
-    ```🔐 UI web segura disponible en https://localhost:3000
-    ```
+
+    🔐 UI web segura disponible en https://localhost:3000
 
 ### 3.Acceder a la interfaz web
 1. Abrir navegador 
