@@ -111,9 +111,9 @@ Esta sección describe el propósito y funcionamiento de los archivos clave que 
 
 #### 🔐 Certificados (certs/)
 El directorio certs/ almacena los certificados y claves necesarias para establecer conexiones TLS seguras. Estos archivos permiten que cliente y servidor verifiquen su identidad mutuamente.
-- server-key.pem: Este archivo contiene la clave privada RSA del servidor. Es crucial para el cifrado TLS, ya que se utiliza para firmar digitalmente los datos que el servidor envía, permite al servidor desencriptar datos que fueron cifrados con su clave pública, y valida que el servidor es quien dice ser (en combinación con su certificado).
-- server-cert.pem: Este archivo es el certificado digital del servidor. Contiene, la clave pública del servidor, la información sobre el servidor (nombre de dominio, organización, fechas de validez, etc.) y una firma digital que verifica la autenticidad del certificado.
-- server-csr.pem: Certificate Signing Request (CSR), o Solicitud de Firma de Certificado. 
+- 🧱 server-key.pem: Este archivo contiene la clave privada RSA del servidor. Es crucial para el cifrado TLS, ya que se utiliza para firmar digitalmente los datos que el servidor envía, permite al servidor desencriptar datos que fueron cifrados con su clave pública, y valida que el servidor es quien dice ser (en combinación con su certificado).
+- 🧱 server-cert.pem: Este archivo es el certificado digital del servidor. Contiene, la clave pública del servidor, la información sobre el servidor (nombre de dominio, organización, fechas de validez, etc.) y una firma digital que verifica la autenticidad del certificado.
+- 🧱 server-csr.pem: Certificate Signing Request (CSR), o Solicitud de Firma de Certificado. 
 Archivo que se genera cuando se quiere obtener un certificado digital firmado por una Autoridad Certificadora (CA). 
 Este archivo contiene la clave pública del servidor, la información del propietario (nombre, organización, dominio, etc.) y una firma digital generada con la clave privada correspondiente.
 - ⚠️ **Sugerencia de buenas prácticas:** Estos archivos no deben compartirse públicamente en entornos reales. En este proyecto se usan solo con fines educativos o de testing local.
@@ -183,3 +183,48 @@ Salida esperada:
     - El nombre debe actualizarse en la tabla.
 
 ## 📝 Ducumentación de Pruebas realizadas
+
+### Pruebas sobre la terminal
+
+- **Corrida del servidor desde la terminal de VSCode:**
+![corrida_secure_server](../docs/img/corrida_secure_server.png)
+
+- **Corrida del servidor Web:**
+![corrida_web_server](../docs/img/Corrida_web_server.png)
+
+- **Corrida del cliente desde la terminal:**
+![corrida_secure_client](../docs/img/corrida_secure_client.png)
+
+- **Ejecutando los comandos LIST y GET, desde la terminal del cliente:**
+![Comandos list a¿y get](../docs/img/get_archivo.png)
+
+- **Ejecutando el comando PUT (captura.png):**
+Podemos ver que al ejecutar el comando PUT en nuestro directorio "files" aparece el archivo captura.png, y si hacemos un get
+ahora nos trae también este archivo.
+![Camando PUT](../docs/img/cliente_put&list.png)
+
+- **Ejecutando el comando RENAME (rename captura.png -> gantt.png):**
+![comando rename](../docs/img/rename_terminal.png)
+
+- **Ejecutando el comando DELETE (delete del archivo enviroment):**
+![Comando delete](../docs/img/delete_terminal.png)
+
+- **Error por cerrar el servidor:**
+![Error de cierre del servidor](../docs/img/cierreDelServidor.pngS)
+
+### Pruebas sobre la página web:
+
+- **Carga de la pagina web:**
+![Carga_pagina_principal](../docs/img/image.png)
+
+- **Pagina web con archivos cargados:**
+![Lista de archivos](../docs/img/localhost_con_archivos_cargados.png)
+
+- **Cargar un nuevo archivo: "env":**
+![carga de archivo env](../docs/img/Carga%20de%20aarchivo%20env.png)
+
+- **Eliminar un archivo (se elimina la captura de pantalla):**
+![Eliminar un archivo](../docs/img/eliminar_archivo.png)
+
+- **Renombrar un archivo: "env" -> "enviroment":**
+![renombrar un archivo](../docs/img/renombrar_archivo.png)
