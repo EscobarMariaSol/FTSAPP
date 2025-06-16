@@ -58,10 +58,35 @@ Este proyecto implementa un sistema de transferencia de archivos cifrada punto a
 ### 🌐 Interfaz web (directorio public/)
 El directorio [public/] contiene los archivos que se muestran en el navegador. Son cargados por el servidor web cuando se accede desde un navegador.
 
-Archivos principales:
-    - index.html: Define la estructura básica de la página web. Es el punto de entrada visual del proyecto.
-    - main.js: Contiene el código JavaScript que maneja las acciones del usuario en la interfaz (como seleccionar un archivo o enviar un comando) y se comunica con el backend vía HTTP.
-    - style.css: Define el estilo visual de la página, incluyendo colores, márgenes, fuentes, tamaños y disposición de elementos.
+#### Archivos principales:
+- index.html: Define la estructura básica de la página web. Es el punto de entrada visual del proyecto.
+- main.js: Contiene el código JavaScript que maneja las acciones del usuario en la interfaz (como seleccionar un archivo o enviar un comando) y se comunica con el backend vía HTTP.
+- style.css: Define el estilo visual de la página, incluyendo colores, márgenes, fuentes, tamaños y disposición de elementos.
+
+### 🧠 Estructura del código fuente (src/)
+El directorio src/ contiene el código fuente principal del sistema. Aquí se ubican los directorios y archivos que definen la lógica del proyecto:
+
+#### 🔐 Certificados (certs/)
+El directorio certs/ almacena los certificados y claves necesarias para establecer conexiones TLS seguras. Estos archivos permiten que cliente y servidor verifiquen su identidad mutuamente.
+- server-key.pem: Este archivo contiene la clave privada RSA del servidor. Es crucial para el cifrado TLS, ya que se utiliza para firmar digitalmente los datos que el servidor envía, permite al servidor desencriptar datos que fueron cifrados con su clave pública, y valida que el servidor es quien dice ser (en combinación con su certificado).
+- server-cert.pem: Este archivo es el certificado digital del servidor. Contiene, la clave pública del servidor, la información sobre el servidor (nombre de dominio, organización, fechas de validez, etc.) y una firma digital que verifica la autenticidad del certificado.
+- server-csr.pem: Certificate Signing Request (CSR), o Solicitud de Firma de Certificado. 
+Archivo que se genera cuando se quiere obtener un certificado digital firmado por una Autoridad Certificadora (CA). 
+Este archivo contiene la clave pública del servidor, la información del propietario (nombre, organización, dominio, etc.) y una firma digital generada con la clave privada correspondiente.
+- ⚠️ **Sugerencia de buenas prácticas:** Estos archivos no deben compartirse públicamente en entornos reales. En este proyecto se usan solo con fines educativos o de testing local.
+
+#### 📥 Descargas (downloads/)
+Este directorio es utilizado por el cliente TLS (tls-client.js) para guardar localmente los archivos descargados desde el servidor.
+Cuando se usa el comando GET, el archivo transferido por el servidor se almacena en esta carpeta.
+
+#### 📁 Archivos del servidor (files/)
+La carpeta files/ actúa como el almacén principal del servidor TLS. Aquí se guardan los archivos disponibles para ser descargados por los clientes.
+- Los archivos que suben los clientes con PUT se almacenan automáticamente aquí.
+- Los comandos como LIST o GET se aplican sobre los contenidos de este directorio.
+
+#### 📤 Subidas temporales (uploads/)
+Esta carpeta puede ser utilizada por el sistema para manejar archivos temporales subidos desde la interfaz web antes de enviarlos al servidor TLS. Por ejemplo, el servidor web-server.js puede recibir un archivo desde el navegador y dejarlo momentáneamente en uploads/, antes de reenviarlo al secure-server.js.
+
 
 ##  🧪 Como probar el proyecto
 
