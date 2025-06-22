@@ -3,6 +3,16 @@
 Proyecto integrador de la materia Programación sobre Redes, el mismo consiste de un sistema que implementa un cliente y un servidor TLS
 en Node.js para la transferencia segura de archivos, asegurando la comunicación cifrada entre los componentes. 
 Incluye funcionalidades para listar, subir, descargar y eliminar archivos, con manejo de errores y validaciones básicas.
+Se utiliza JavaScript para el Front-end.
+
+## 🚀 Alcance y funcionalidades
+
+- **CONCURRENCIA:** Manejo de múltiples solicitudes simultáneas (utilizando módulos de Node.js y patrones de diseño).
+- **COMUNICACIÓN:** Creación de un servidor que escuche y responda a solicitudes, y un cliente que se conecte para enviar/recibir datos.
+- **TRANSFERENCIA DE ARCHIVOS:** Implementación de streams y buffers para enviar y recibir archivos.
+- **SEGURIDAD:** Introducción de mecanismos de seguridad básicos, que se ampliarán en futuras unidades.
+
+
 ## 🔐 Tecnologías Utilizadas
 
 - Node.js
