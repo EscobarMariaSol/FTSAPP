@@ -9,6 +9,7 @@
 const tls = require('tls'); // Módulo para la creación de clientes y servidores TLS/SSL.
 const fs = require('fs');   // Módulo para interactuar con el sistema de archivos (File System).
 const path = require('path'); // Módulo para trabajar con rutas de archivos y directorios de forma normalizada.
+const { console } = require('inspector');
 
 // --- Configuración de la Conexión ---
 const PORT = 6000; // Define el puerto en el que el servidor TLS (secure-server.js) está escuchando.
@@ -158,7 +159,6 @@ socket.on('data', chunk => {
 
 socket.on('end', () => {
   console.log('[PUT] Conexión cerrada por el servidor');
-
   if (serverResponse.includes('OK: PUT complete')) {
     console.log('[PUT] Subida exitosa, borrando archivo temporal');
     fs.unlink(filepath, err => {
